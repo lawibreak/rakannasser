@@ -1,0 +1,23 @@
+---
+title: إصدارات
+permalink: /publications/
+---
+<section class="box panel">
+  {% include panel-head.html title="إصدارات" icon="book" %}
+  <div class="books">
+  {% for b in site.data.books %}
+    <article class="book">
+      <div class="book-cover">{% if b.cover != "" %}<img src="{{ b.cover | relative_url }}" alt="{{ b.title }}">{% else %}{% include icon.html name="book" px=30 %}<span>{{ b.title }}</span>{% endif %}</div>
+      <div class="book-body">
+        <p class="book-meta"><span class="chip">{{ b.kind }}</span> {{ b.year }}</p>
+        <h2>{{ b.title }}</h2>
+        <p>{{ b.description }}</p>
+        <div class="book-actions">
+          {% if b.buy != "" %}<a class="btn btn-accent" href="{{ b.buy }}" rel="noopener">شراء الرواية</a>{% endif %}
+          {% if b.download != "" %}<a class="btn" href="{{ b.download }}" rel="noopener">تحميل الرواية</a>{% endif %}
+        </div>
+      </div>
+    </article>
+  {% endfor %}
+  </div>
+</section>

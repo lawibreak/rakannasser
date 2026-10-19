@@ -1,0 +1,4 @@
+<div class="panel-head">
+  <h2 class="panel-title"><span class="icon-box">{% include icon.html name=include.icon px=18 %}</span>{{ include.title }}</h2>
+  {% if include.href %}<a class="btn btn-sm" href="{{ include.href | relative_url }}">الكل {% include icon.html name="arrow" px=14 %}</a>{% endif %}
+</div>

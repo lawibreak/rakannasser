@@ -1,0 +1,14 @@
+---
+title: تدوينات
+permalink: /blog/
+---
+<section class="box panel">
+  {% include panel-head.html title="تدوينات" icon="pen" %}
+  <div class="archive">
+  {% assign years = site.posts | group_by_exp: "p", "p.date | date: '%Y'" %}
+  {% for y in years %}
+    <h3 class="year">{{ y.name }} <small>({{ y.items.size }})</small></h3>
+    <ul class="rows">{% for post in y.items %}{% include post-row.html post=post %}{% endfor %}</ul>
+  {% endfor %}
+  </div>
+</section>

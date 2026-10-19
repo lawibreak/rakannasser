@@ -1,0 +1,11 @@
+<div class="tag-grid">
+{%- assign tags = site.tags | sort -%}
+{%- for t in tags -%}
+  {%- assign name = t[0] -%}{%- assign tposts = t[1] -%}{%- assign bg = nil -%}
+  {%- for p in tposts -%}{%- if p.image -%}{%- assign bg = p.image -%}{%- break -%}{%- endif -%}{%- endfor -%}
+  <a class="tag-card" href="{{ '/tags/' | relative_url }}#{{ name | uri_escape }}">
+    {% if bg %}<img src="{{ bg | relative_url }}" alt="" loading="lazy">{% endif %}
+    <span class="tag-name">{{ name }}</span><span class="tag-count">{{ tposts.size }}</span>
+  </a>
+{%- endfor -%}
+</div>

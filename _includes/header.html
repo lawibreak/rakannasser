@@ -1,0 +1,14 @@
+{%- assign p = page.url -%}
+<header class="site-header box">
+  <a class="brand" href="{{ '/' | relative_url }}"><span class="chev">❯</span>{{ site.title }}</a>
+  <button class="icon-btn menu-btn" type="button" aria-label="القائمة" aria-expanded="false" data-menu>{% include icon.html name="menu" %}</button>
+  <nav class="nav" aria-label="القائمة الرئيسية">
+    <a href="{{ '/notes/' | relative_url }}" {% if p contains '/notes/' %}class="active"{% endif %}>{% include icon.html name="bulb" px=16 %}شذرات</a>
+    <a href="{{ '/blog/' | relative_url }}" {% if p contains '/blog/' %}class="active"{% endif %}>{% include icon.html name="pen" px=16 %}تدوينات</a>
+    <a href="{{ '/publications/' | relative_url }}" {% if p contains '/publications/' %}class="active"{% endif %}>{% include icon.html name="book" px=16 %}إصدارات</a>
+    <a href="{{ '/about/' | relative_url }}" {% if p contains '/about/' %}class="active"{% endif %}>{% include icon.html name="user" px=16 %}عنّي</a>
+    <button class="icon-btn theme-btn" type="button" aria-label="تبديل الوضع الليلي" data-theme-toggle>
+      <span class="when-light">{% include icon.html name="moon" px=17 %}</span><span class="when-dark">{% include icon.html name="sun" px=17 %}</span>
+    </button>
+  </nav>
+</header>

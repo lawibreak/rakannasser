@@ -1,0 +1,11 @@
+---
+title: شذرات
+permalink: /notes/
+---
+<section class="box panel">
+  {% include panel-head.html title="شذرات" icon="bulb" %}
+  <ul class="notes">
+    {% assign notes = site.notes | sort: "date" | reverse %}
+    {% for note in notes %}{% include note-item.html note=note %}{% endfor %}
+  </ul>
+</section>

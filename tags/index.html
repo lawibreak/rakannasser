@@ -1,0 +1,15 @@
+---
+title: الوسوم
+permalink: /tags/
+---
+<section class="plain-section">
+  <div class="plain-head"><h1 class="panel-title"><span class="icon-box">{% include icon.html name="tag" px=18 %}</span>الوسوم</h1></div>
+  {% include tag-cards.html %}
+</section>
+{% assign tags = site.tags | sort %}
+{% for t in tags %}{% assign tname = t[0] %}
+<section class="box panel" id="{{ tname }}">
+  {% include panel-head.html title=tname icon="tag" %}
+  <ul class="rows">{% for post in t[1] %}{% include post-row.html post=post %}{% endfor %}</ul>
+</section>
+{% endfor %}

@@ -1,0 +1,64 @@
+# ─── إعدادات الموقع ─────────────────────────────────────────────
+title: "راكان ناصر"
+tagline: "الكتابة وما نتج عنها.."
+description: "مدونة راكان ناصر: مقالات ونصوص عن الإنسان، الحياة، القرية، الوظيفة، الحب، والكتابة."
+author:
+  name: "راكان ناصر"
+  photo: "/assets/img/author-photo.jpg"
+  bio: "أهلًا بك 👋 هنا أكتب عن الإنسان والحياة، والقرية، والوظيفة، والحب، والمعنى."
+
+lang: ar
+timezone: Asia/Riyadh
+
+# عند النشر على https://<username>.github.io/<repo>/ ضع اسم المستودع هنا، مثل: "/blog"
+# وعند النشر على https://<username>.github.io/ أو على نطاق خاص اتركه فارغًا.
+url: ""
+baseurl: "/rakannasser"
+
+social:
+  twitter: "https://x.com/rakannasser80"
+  linkedin: "https://sa.linkedin.com/in/rakan-nasser-7b787772"
+  email: "lawibreak@gmail.com"
+
+# التعليقات (اختياري): فعّل Giscus من https://giscus.app ثم املأ القيم
+giscus:
+  repo: ""          # مثال: username/blog
+  repo_id: ""
+  category: ""
+  category_id: ""
+
+# ─── البناء ─────────────────────────────────────────────────────
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+
+permalink: /blog/:title/
+
+collections:
+  notes:
+    output: true
+    permalink: /notes/:name/
+
+defaults:
+  - scope: { path: "", type: posts }
+    values: { layout: post }
+  - scope: { path: "", type: notes }
+    values: { layout: note }
+  - scope: { path: "" }
+    values: { layout: default }
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+feed:
+  path: feed.xml
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - .github

@@ -1,0 +1,13 @@
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+vendor/
+Gemfile.lock
+.DS_Store
+
+# Old WordPress exports kept locally, not published
+*.zip
+WordPress.*.xml
+articles.xml
+*.rtf

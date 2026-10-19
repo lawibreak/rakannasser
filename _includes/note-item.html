@@ -1,0 +1,9 @@
+{%- assign note = include.note -%}
+{%- case note.type -%}{%- when "رابط" -%}{%- assign ic = "link" -%}{%- when "يوتيوب" -%}{%- assign ic = "play" -%}{%- when "فيلم" -%}{%- assign ic = "film" -%}{%- when "كتاب" -%}{%- assign ic = "book" -%}{%- else -%}{%- assign ic = "bulb" -%}{%- endcase -%}
+<li class="note">
+  <div class="note-meta">{% include icon.html name=ic px=13 %}<span>{{ note.type | default: "خاطرة" }}</span><a href="{{ note.url | relative_url }}"><time datetime="{{ note.date | date_to_xmlschema }}">{{ note.date | date: "%Y-%m-%d" }}</time></a></div>
+  <div class="note-body">
+    <div class="note-text">{% if include.body %}{{ include.body }}{% else %}{{ note.content | strip_html | truncate: 220 }}{% endif %}{% if note.link %} <a href="{{ note.link }}" rel="noopener">↗</a>{% endif %}</div>
+    {% if note.image %}<img class="note-thumb" src="{{ note.image | relative_url }}" alt="" loading="lazy">{% endif %}
+  </div>
+</li>

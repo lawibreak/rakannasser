@@ -1,0 +1,39 @@
+---
+layout: default
+---
+{%- assign words = content | strip_html | number_of_words -%}
+{%- assign minutes = words | divided_by: 200 | plus: 1 -%}
+<article class="box article">
+  <header class="article-head">
+    <h1>{{ page.title }}</h1>
+    <p class="article-meta">
+      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y-%m-%d" }}</time>
+      • {{ minutes }} دقيقة قراءة
+    </p>
+    <span class="pill" aria-hidden="true"></span>
+  </header>
+  {% if page.image %}{% unless content contains page.image %}
+  <img class="cover" src="{{ page.image | relative_url }}" alt="" loading="lazy">
+  {% endunless %}{% endif %}
+  <div class="prose">
+    {{ content }}
+  </div>
+  {% if page.tags.size > 0 %}
+  <div class="post-tags">
+    {% for t in page.tags %}<a class="chip" href="{{ '/tags/' | relative_url }}#{{ t | uri_escape }}">#{{ t }}</a>{% endfor %}
+  </div>
+  {% endif %}
+  <nav class="post-nav" aria-label="تنقّل بين التدوينات">
+    {% if page.previous %}<a class="btn" href="{{ page.previous.url | relative_url }}">→ {{ page.previous.title }}</a>{% else %}<span></span>{% endif %}
+    {% if page.next %}<a class="btn" href="{{ page.next.url | relative_url }}">{{ page.next.title }} ←</a>{% endif %}
+  </nav>
+</article>
+{% if site.giscus.repo != "" %}
+<section class="box comments">
+  <script src="https://giscus.app/client.js"
+    data-repo="{{ site.giscus.repo }}" data-repo-id="{{ site.giscus.repo_id }}"
+    data-category="{{ site.giscus.category }}" data-category-id="{{ site.giscus.category_id }}"
+    data-mapping="pathname" data-reactions-enabled="1" data-input-position="top"
+    data-theme="preferred_color_scheme" data-lang="ar" crossorigin="anonymous" async></script>
+</section>
+{% endif %}

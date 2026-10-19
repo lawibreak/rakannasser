@@ -1,0 +1,19 @@
+<section class="box rss-box">
+  <p>تابع الجديد عبر خلاصة RSS، أو تواصل معي عبر البريد.</p>
+  <div class="rss-actions">
+    <a class="btn" href="{{ '/feed.xml' | relative_url }}">{% include icon.html name="rss" px=16 %}RSS</a>
+    <a class="btn" href="mailto:{{ site.social.email }}">{% include icon.html name="mail" px=16 %}راسلني</a>
+  </div>
+</section>
+<footer class="site-footer box">
+  <img class="avatar" src="{{ site.author.photo | relative_url }}" alt="{{ site.author.name }}" width="52" height="52" loading="lazy">
+  <div>
+    <p class="bio">{{ site.author.bio }} <a class="more" href="{{ '/about/' | relative_url }}">المزيد عنّي ←</a></p>
+    <div class="footer-meta">
+      <span>© {{ site.time | date: "%Y" }} {{ site.author.name }}</span>
+      <a href="{{ '/feed.xml' | relative_url }}" aria-label="RSS">{% include icon.html name="rss" px=15 %}</a>
+      {% if site.social.linkedin != "" %}<a href="{{ site.social.linkedin }}" aria-label="LinkedIn" rel="noopener">{% include icon.html name="linkedin" px=15 %}</a>{% endif %}
+      {% if site.social.twitter != "" %}<a href="{{ site.social.twitter }}" aria-label="X" rel="noopener">{% include icon.html name="x" px=15 %}</a>{% endif %}
+    </div>
+  </div>
+</footer>

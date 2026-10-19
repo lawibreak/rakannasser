@@ -1,0 +1,27 @@
+---
+layout: default
+---
+<h1 class="sr-only">{{ site.title }} — {{ site.tagline }}</h1>
+
+<section class="box panel">
+  {% include panel-head.html title="شذرات" icon="bulb" href="/notes/" %}
+  <ul class="notes">
+    {% assign notes = site.notes | sort: "date" | reverse %}
+    {% for note in notes limit: 5 %}{% include note-item.html note=note %}{% endfor %}
+  </ul>
+</section>
+
+<section class="box panel">
+  {% include panel-head.html title="تدوينات" icon="pen" href="/blog/" %}
+  <ul class="rows">
+    {% for post in site.posts limit: 10 %}{% include post-row.html post=post %}{% endfor %}
+  </ul>
+</section>
+
+<section class="plain-section">
+  <div class="plain-head">
+    <h2 class="panel-title"><span class="icon-box">{% include icon.html name="tag" px=18 %}</span>الوسوم</h2>
+    <a class="btn btn-sm" href="{{ '/tags/' | relative_url }}">الكل {% include icon.html name="arrow" px=14 %}</a>
+  </div>
+  {% include tag-cards.html %}
+</section>
